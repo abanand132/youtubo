@@ -5,7 +5,7 @@
 It is python based gui software that helps user to download youtube videos (single video or entire playlist) and audio(mp3) with just few clicks.
 
 ## Contents
-- [Features](Features)
+- [Features](#Features)
 
 ## Features
 
