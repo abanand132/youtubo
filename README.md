@@ -8,6 +8,7 @@ It is python based gui software that helps user to download youtube videos (sing
 - [Important Info](#important-info)
 - [Features](#features)
 - [Tech Stacks](#tech-stacks)
+- [Installations](#installations)
 
 
 ## Important Info
@@ -32,8 +33,8 @@ It is python based gui software that helps user to download youtube videos (sing
 ## Installations
 - Just go to [Application Folder](https://github.com/abanand132/youtubo/tree/main/application) and download **youtubo.exe** file.
 - After successful downloading into your device, just double click and start. You are ready to go. That's it.
-  ### Issues
-  - If you have facing this then just click on more info and then run anyway
+  ### Known Issues
+  - If you are facing Microsoft Defender issue  then just click on `more info` and then `run anyway` or watch video given below
     https://github.com/abanand132/youtubo/assets/76703822/ede26d11-94ae-441e-a430-05b45a217aeb
 
-
+**Thank you for using this app. Your feedback matters so do give your feedback.**
