@@ -28,3 +28,12 @@ It is python based gui software that helps user to download youtube videos (sing
 - Python3
 - [PyTube](https://pytube.io/en/latest/)
 - Tkinter (For GUI Interface)
+
+## Installations
+- Just go to [Application Folder](https://github.com/abanand132/youtubo/tree/main/application) and download **youtubo.exe** file.
+- After successful downloading into your device, just double click and start. You are ready to go. That's it.
+  ### Issues
+  - If you have facing this then just click on more info and then run anyway
+    https://github.com/abanand132/youtubo/assets/76703822/ede26d11-94ae-441e-a430-05b45a217aeb
+
+
