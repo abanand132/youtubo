@@ -1,11 +1,19 @@
-![youTubo_logo](https://github.com/abanand132/youtubo/assets/76703822/10e40679-831c-4f85-aa6d-cc136ba73412)
+![youTubo_logo](https://github.com/abanand132/youtubo/assets/76703822/ef0beb62-b8a8-411e-9498-938513184077)
 
 ### A lightweight, easy to use, Youtube Videos & Audio downloader.
 
 It is python based gui software that helps user to download youtube videos (single video or entire playlist) and audio(mp3) with just few clicks.
 
 ## Contents
-- [Features](#Features)
+- [Important Info](#important-info)
+- [Features](#features)
+- [Tech Stacks](#tech-stacks)
+
+
+## Important Info
+- Operating System : Windows 10 and above
+- Current version : 1.0
+- Developer : [Abhishek Anand](https://theabhishek.me)
 
 ## Features
 
@@ -20,8 +28,3 @@ It is python based gui software that helps user to download youtube videos (sing
 - Python3
 - [PyTube](https://pytube.io/en/latest/)
 - Tkinter (For GUI Interface)
-
-## Important Info
-- Operating System : Windows 10 and above
-- Current version : 1.0
-- Developer : [Abhishek Anand](https://theabhishek.me)
