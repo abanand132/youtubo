@@ -90,6 +90,7 @@ def search_func():
             stream720 = yt.streams.get_by_itag(22)  # video
             stream360 = yt.streams.get_by_itag(18)  # video
             stream128 = yt.streams.get_by_itag(140)  # audio
+            print(yt.vid_info)
             # control goes to next window - search window
             search_page.search(yt, home, stream720, stream360, stream128, theme_integer)
 
@@ -123,22 +124,20 @@ search = Button(text="Search Video", font=('arial', 13, 'bold'), bg='black', for
 search.config(activebackground='green', activeforeground='white')
 search.grid(row=6, column=2)
 
-def stop_func():
-    messagebox.showwarning(title="Issue", message="This feature is not active right now..")
+# def stop_func():
+#     messagebox.showwarning(title="Issue", message="This feature is not active right now")
 
 # Playlist Search
-def search_func1():
+def search_playlist():
     url = playlist_list.get()
     if len(url) > 0:
         try:
             p = Playlist(url)
-            x = p.title
-            length = p.length
-            # if length <= 50:
-            #     playlist_download.playlist_less(p, home)
-            # else:
-            #     playlist_download.playlist_more(p, home)
-            playlist_download.playlist_less(p, home)
+            playlistTitle = p.title
+            noOfVideos = p.length
+
+            playlist_download.playlist(p, playlistTitle, noOfVideos, home, theme_integer)
+
         except pytube.exceptions.VideoPrivate:
             messagebox.showwarning(title="Failed!", message="Sorry You can't download private videos from YouTube."
                                                             "\n\nThank you!")
@@ -171,7 +170,7 @@ def search_func1():
 
 # Playlist search button
 search1 = Button(text="Search Playlist", font=('arial', 13, 'bold'), bg='black', foreground='white',
-                 command=stop_func)
+                 command=search_playlist)
 search1.config(activebackground='green', activeforeground='white')
 search1.grid(row=10, column=2)
 

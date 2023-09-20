@@ -223,7 +223,7 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
             home.state("zoomed")
 
         home_button = Button(search_window, text="Home", font=('arial', 10), bg="white", command=home_func)
-        home_button.grid(row=0, column=3)
+        home_button.grid(row=0, column=4)
 
         report_problem = Button(search_window, text="Report bug", font=('arial', 10, 'bold'), bg="cyan")
         report_problem.config(foreground='black')

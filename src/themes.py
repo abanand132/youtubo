@@ -62,44 +62,38 @@ def back_to_normal_main(home, sub_heading_label, link_entry, note1, label1,
 
 # Dark mode function of playlist_download.py file
 
-def dark_mode_func_playlist(heading_label, video_title, video_title_res, owner, total_videos, download_heading,
-            res_one, label1, label2, label3, Browse, home_button, dark_mode_btn, show_size, play_win):
-    play_win.config(bg='black')
-    heading_label.config(bg='black', foreground='white')
-    video_title.config(bg='black', foreground='yellow')
-    video_title_res.config(bg='black', foreground='cyan')
-    owner.config(bg='black', foreground='deep pink')
-    total_videos.config(bg='black', foreground='yellow')
-    download_heading.config(bg='black', foreground='red', font='bold')
-    res_one.config(bg='black', foreground='yellow')
-    Browse.config(bg="dark orange", foreground='black')
-    Browse.bind("<Leave>", func=lambda e: Browse.config(background='dark orange', foreground='black'))
+def dark_mode_func_playlist(heading_label, video_title, video_title_res, owner, total_videos,
+            res_one, label1, label2, label3, Browse, home_button, dark_mode_btn,  play_win):
+    play_win.config(bg='#1A2421')
+    heading_label.config(bg='#1A2421', foreground='white')
+    video_title.config(bg='#1A2421', foreground='yellow')
+    video_title_res.config(bg='#1A2421', foreground='cyan')
+    owner.config(bg='#1A2421', foreground='deep pink')
+    total_videos.config(bg='#1A2421', foreground='yellow')
+    res_one.config(bg='#1A2421', foreground='yellow')
+    Browse.config(bg="black", foreground='white')
+    Browse.bind("<Leave>", func=lambda e: Browse.config(background='black', foreground='white'))
     home_button.config(bg='yellow', foreground='black')
-    dark_mode_btn.config(bg='black', foreground='white')
-    show_size.config(bg='black', foreground='white')
-
-    label1.config(bg='black')
-    label2.config(bg='black')
-    label3.config(bg='black')
+    dark_mode_btn.config(bg='#1A2421', foreground='white')
+    label1.config(bg='#1A2421')
+    label2.config(bg='#1A2421')
+    label3.config(bg='#1A2421')
 
 
 
-def back_to_normal_playlist(heading_label, video_title, video_title_res, owner, total_videos, download_heading,
-            res_one, label1, label2, label3, Browse, home_button, dark_mode_btn, show_size, play_win):
+def back_to_normal_playlist(heading_label, video_title, video_title_res, owner, total_videos,
+            res_one, label1, label2, label3, Browse, home_button, dark_mode_btn, play_win):
     play_win.config(bg='white')
     heading_label.config(bg='white', foreground='black')
     video_title.config(bg='white', foreground='black')
     video_title_res.config(bg='white', foreground='blue')
     owner.config(bg='white', foreground='black')
     total_videos.config(bg='white', foreground='indigo')
-    download_heading.config(bg='white', foreground='red', font=('arial', 12))
     res_one.config(bg='white', foreground='black')
     Browse.config(bg="black", foreground='white')
     Browse.bind("<Leave>", func=lambda e: Browse.config(background='black', foreground='white'))
     home_button.config(bg='white', foreground='black')
     dark_mode_btn.config(bg='white', foreground='black')
-    show_size.config(bg='white', foreground='black')
-
     label1.config(bg='white')
     label2.config(bg='white')
     label3.config(bg='white')
