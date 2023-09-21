@@ -1,6 +1,6 @@
 ![youTubo_logo](https://github.com/abanand132/youtubo/assets/76703822/ef0beb62-b8a8-411e-9498-938513184077)
 
-### A lightweight, easy to use, Youtube Videos & Audio downloader.
+### A lightweight, easy to use, Youtube Videos & Audio downloader
 
 It is python based gui software that helps user to download youtube videos (single video or entire playlist) and audio(mp3) with just few clicks.
 
@@ -14,18 +14,18 @@ It is python based gui software that helps user to download youtube videos (sing
 
 ## Important Info
 - Operating System : Windows 10 and above
-- Current version : 1.1
+- Current version : 1.2
 - Developer : [Abhishek Anand](https://theabhishek.me)
 
 ## Features
 
-- User can download a single video or an entire playlist according to their needs.
-- Multiple Resolutions (360p, 720p etc.) of videos available.
-- You can also download just audio (mp3) of a video.
-- English Subtitles (if available) then can be downloaded alongside with the video 
-- Application comes with light mode & dark mode.
-- Progress bar to show the status of video/audio downloading.
-- Notify when download completed
+- User can download a single video or an entire playlist according to their needs
+- Multiple Resolutions (360p, 720p etc.) of videos available
+- You can also download just audio (mp3) of a video
+- English Subtitles (if available) then can be downloaded alongside with the Single video as well as for whole Playlist 
+- Application comes with light mode & dark mode
+- Progress bar to show the status of video/audio downloading
+- Notify users when download completed
 
 ## Tech Stacks
 - Python3
@@ -40,5 +40,6 @@ It is python based gui software that helps user to download youtube videos (sing
   https://github.com/abanand132/youtubo/assets/76703822/ede26d11-94ae-441e-a430-05b45a217aeb
 - Downloading playlist of youtube shorts is not available
 - 1080p resolution is not available because YouTube used a protocol called DASH in which video file and audio of that video are two separate files. Because of this software needs to download both files separately and merging them alongside takes alot of time. So, that's why It is not available at the moment. Currenlty working on it, if possible then it will be available soon.
+<br>
 <br>
 <b>Thank you for using this app. Your feedback matters so do give your feedback.</b>
