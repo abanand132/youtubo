@@ -29,12 +29,12 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
         def back_to_normal_func():
             themes.back_to_normal_playlist(heading_label, video_title, video_title_res, owner, total_videos,
                  res_one, label1, label2, label3, Browse, home_btn, dark_mode_btn, play_win)
-            dark_mode_btn.config(command=dark_mode_func)
+            dark_mode_btn.config(command=dark_mode_func, text="🔆")
 
         def dark_mode_func():
             themes.dark_mode_func_playlist(heading_label, video_title, video_title_res, owner, total_videos,
                  res_one, label1, label2, label3, Browse, home_btn, dark_mode_btn, play_win)
-            dark_mode_btn.config(command=back_to_normal_func)
+            dark_mode_btn.config(command=back_to_normal_func, text="🌙")
 
         def on_progress(stream, chunk, bytes_remaining):
             global box_print

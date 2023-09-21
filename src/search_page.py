@@ -7,6 +7,7 @@ import os
 import time
 import themes
 from plyer import notification
+import subtitles
 
 box_print = 1
 
@@ -48,15 +49,15 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
         def back_to_normal_func():
             themes.back_to_normal_search(search_window, space_label, heading_label, video_title, video_title_res,
                     file_size_res360, file_size_res720, file_size_res128, Browse, note,
-                    audio_one, label2, label3, label4, label5, label6, res_one, res_two, home_button)
-            dark_mode.config(command=dark_mode_func1, foreground='black', bg='white')
+                    audio_one, label2, label3, label4, label5, label6, label7, res_one, res_two, home_button)
+            dark_mode.config(command=dark_mode_func1, foreground='black', bg='white', text="🔆")
 
         def dark_mode_func1():
             themes.dark_mode_func_search(search_window, space_label, heading_label, video_title, video_title_res,
             file_size_res360, file_size_res720, file_size_res128, Browse, note, audio_one,
-            label2, label3, label4, label5, label6, res_one, res_two, home_button)
+            label2, label3, label4, label5, label6, label7, res_one, res_two, home_button)
 
-            dark_mode.config(command=back_to_normal_func, foreground='white', bg='#1A2421')
+            dark_mode.config(command=back_to_normal_func, foreground='white', bg='#1A2421', text="🌙")
 
         # Function to select location in file manager
         def browse():
@@ -90,11 +91,22 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
         video_title = Label(search_window, text="Title : ", font=('arial', 12), bg='white')
         video_title.grid(row=2, column=1)
 
-        video_title_res = Label(search_window, text=f"{yt.title}", font=('arial', 12), bg='white')
+        title = yt.title  # title of the video
+
+        if len(title) > 80:
+            title = title[0:81]
+        video_title_res = Label(search_window, text=f"{title}", font=('arial', 12), bg='white')
         video_title_res.config(foreground='black')
         video_title_res.grid(row=2, column=2)
 
-
+        # modifying title as it may contain special characters which may not supported by windows
+        title = yt.title
+        newstr = ""
+        for i in title:
+            if i.isalnum() or i == " ":
+                newstr += i
+        title = newstr
+        # print(title)
 
         size720 = round(stream720.filesize_mb, 2)
         file_size_res720 = Label(search_window, text=f"File Size : {size720} MB", font=('arial', 12), bg="white")
@@ -130,13 +142,16 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
 
         def res_720():
             if var.get() == 0:
-                os.system('cls')
+                # It gives 1 if check box is ticked otherwise it gives 0  -- subtitle download
+                if checked_state.get():
+                    subtitles.download_subtitle(yt, Download_path.get(), title)
+                os.system('cls')  # clearing cmd/terminal
                 search_window.iconify()
                 global box_print
                 box_print = 1
                 print("Downloading...\n")
                 try:
-                    stream720.download(Download_path.get())
+                    stream720.download(output_path=Download_path.get(), filename=f"{title}.mp4")
                     time.sleep(2)
                     search_window.state("zoomed")
                     desktop_notify(Download_path.get())
@@ -151,13 +166,16 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
 
         def res_360():
             if var.get() == 0:
-                os.system('cls')
+                # It gives 1 if check box is ticked otherwise it gives 0  -- subtitle download
+                if checked_state.get():
+                    subtitles.download_subtitle(yt, Download_path.get(), title)
+                os.system('cls')  # clearing terminal/cmd
                 search_window.iconify()
                 global box_print
                 box_print = 1
                 print("Downloading...\n")
                 try:
-                    stream360.download(Download_path.get())
+                    stream360.download(output_path=Download_path.get(), filename=f"{title}.mp4")
                     time.sleep(2)
                     search_window.state("zoomed")
                     desktop_notify(Download_path.get())
@@ -170,15 +188,15 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
                 messagebox.showwarning(title='Failed',
                                     message="You need to select location to download file/files")
 
-        def audio1():
+        def audio():
             if var.get() == 0:
-                os.system('cls')
+                os.system('cls')  # clearing cmd/terminal
                 search_window.iconify()
                 global box_print
                 box_print = 1
                 print("Downloading...\n")
                 try:
-                    outfile = stream128.download(Download_path.get())
+                    outfile = stream128.download(output_path=Download_path.get(), filename=f"{title}.mp4")
                     base, ext = os.path.splitext(outfile)
                     new_file = base + '.mp3'
                     os.rename(outfile, new_file)
@@ -196,7 +214,7 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
 
         # Buttons
         audio_button = Button(search_window, text="Download", foreground="white", font=('arial', 13), bg="green")
-        audio_button.config(command=audio1, activeforeground='white', activebackground='red')
+        audio_button.config(command=audio, activeforeground='white', activebackground='red')
         audio_button.grid(row=6, column=2)
 
         res_720_button = Button(search_window, text="Download", foreground="white", font=('arial', 13), bg="green")
@@ -208,15 +226,27 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
         res_360_button.grid(row=8, column=2)
 
 
-
+        # space labels
         label6 = Label(search_window, text="", bg="white")  # to create space
         label6.grid(row=10, column=1)
+
+        label7 = Label(search_window, text="", bg="white")  # to create space
+        label7.grid(row=12, column=1)
+
+
+
+        # variable to hold on to checked state, 0 is off, 1 is on.
+        checked_state = IntVar()
+        isSubtitle = Checkbutton(search_window, text="Download Subtitle", variable=checked_state)
+        isSubtitle.config(font=('consolas', 11), bg='#edea9a', foreground='black')
+        isSubtitle.grid(row=11, column=1)
+
 
         note = Label(search_window, text='On clicking "Download" button, your download will be\n automatically '
                                          'started and "Download" button will become red. \n'
                                          'We will let you know through pop-up notification.')
         note.config(bg="white", foreground='blue')
-        note.grid(row=11, column=2)
+        note.grid(row=13, column=2)
 
         def home_func():
             search_window.destroy()
@@ -225,15 +255,19 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
         home_button = Button(search_window, text="Home", font=('arial', 10), bg="white", command=home_func)
         home_button.grid(row=0, column=4)
 
-        report_problem = Button(search_window, text="Report bug", font=('arial', 10, 'bold'), bg="cyan")
-        report_problem.config(foreground='black')
-        report_problem.grid(row=11, column=3)
-        report_problem.bind("<Button>", lambda e: webbrowser.open_new_tab("https://linktr.ee/abanand132"))
+        def report_issue():
+            if messagebox.askyesno(title="Report an issue",
+                                   message="YouTubo wants to redirect you to an external website. Proceed ?"):
+                webbrowser.open_new_tab("https://github.com/abanand132/youtubo/issues")
+
+        report_problem = Button(search_window, text="Report bug", font=('arial', 12, 'bold'), bg="cyan")
+        report_problem.config(foreground='black', activebackground='black', activeforeground='white', command=report_issue)
+        report_problem.grid(row=13, column=4)
 
 
-        dark_mode = Button(search_window, text="🌑", font=('arial', 30), bg='white', foreground='black', borderwidth=0,
+        dark_mode = Button(search_window, text="🔆", font=('arial', 30), bg='white', foreground='black', borderwidth=0,
                            command=dark_mode_func1)
-        dark_mode.grid(row=11, column=1)
+        dark_mode.grid(row=13, column=0)
 
         # set dark theme as default
         if theme_integer.get() == 0:

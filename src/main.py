@@ -17,6 +17,7 @@ except ModuleNotFoundError:
                            message='Software needs to install some libraries to work properly.\n\nPress "Yes" to start download'):
         p = installation.main("pytube")
         q = installation.main("plyer")
+        r = installation.main("youtube-transcript-api")
         if p and q:
             if messagebox.askokcancel(title="Restart Application",
                     message="We installed some required library to run this application.\nSo, you need "
@@ -90,7 +91,6 @@ def search_func():
             stream720 = yt.streams.get_by_itag(22)  # video
             stream360 = yt.streams.get_by_itag(18)  # video
             stream128 = yt.streams.get_by_itag(140)  # audio
-            print(yt.vid_info)
             # control goes to next window - search window
             search_page.search(yt, home, stream720, stream360, stream128, theme_integer)
 
@@ -124,8 +124,6 @@ search = Button(text="Search Video", font=('arial', 13, 'bold'), bg='black', for
 search.config(activebackground='green', activeforeground='white')
 search.grid(row=6, column=2)
 
-# def stop_func():
-#     messagebox.showwarning(title="Issue", message="This feature is not active right now")
 
 # Playlist Search
 def search_playlist():
@@ -174,7 +172,7 @@ search1 = Button(text="Search Playlist", font=('arial', 13, 'bold'), bg='black',
 search1.config(activebackground='green', activeforeground='white')
 search1.grid(row=10, column=2)
 
-youtubo_version = 1.0
+youtubo_version = 1.1
 yt_version = Label(text=f"version - {youtubo_version}", font=('arial', 12))
 yt_version.grid(row=13, column=2)
 
@@ -184,6 +182,7 @@ def back_to_normal_func():
                                label2, label3, label4, label5, label6, label7, video_link, playlist_link, playlist_list,
                                space_label, close, clear_search_video, clear_search_playlist, yt_version, img_label)
     dark_mode_btn.config(bg='white', foreground='black', command=dark_mode_func, activebackground='white')
+    dark_mode_btn.config(text="🔆")
     theme_integer.set(1)
 
 
@@ -192,10 +191,11 @@ def dark_mode_func():
                                label2, label3, label4, label5, label6, label7, video_link, playlist_link, playlist_list,
                                space_label, close, clear_search_video, clear_search_playlist, yt_version, img_label)
     dark_mode_btn.config(bg='#1A2421', foreground='white', command=back_to_normal_func, activebackground='#1A2421')
+    dark_mode_btn.config(text="🌙")
     theme_integer.set(0)
 
 
-dark_mode_btn = Button(text="🌑", font=('arial', 30), bg='white', foreground='black', borderwidth=0,
+dark_mode_btn = Button(text="🔆", font=('arial', 30), bg='white', foreground='black', borderwidth=0,
                        command=dark_mode_func, activebackground='white')
 dark_mode_btn.grid(row=13, column=1)
 
@@ -223,13 +223,13 @@ clear_search_playlist.grid(row=8, column=4)
 
 
 def contact_func():
-    if messagebox.askyesno(
-            title="Report an issue", message="YouTubo wants to redirect you to an external website. Proceed ?"):
+    if messagebox.askyesno(title="Report an issue",
+                           message="YouTubo wants to redirect you to an external website. Proceed ?"):
         # contact_me.bind("<Button>", lambda e: webbrowser.open_new_tab("https://theabhishek.me"))
-        webbrowser.open_new_tab("https://theabhishek.me")
+        webbrowser.open_new_tab("https://github.com/abanand132/youtubo/issues")
 
 
-contact_me = Button(text='Contact Us', font=('arial', 12), bg='cyan', foreground='black')
+contact_me = Button(text='Report Problem', font=('arial', 12), bg='cyan', foreground='black')
 contact_me.config(activebackground='black', activeforeground='white', command=contact_func)
 contact_me.grid(row=13, column=3)
 

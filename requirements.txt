@@ -1,0 +1,4 @@
+pytube
+plyer
+youtube-transcript-api
+webbrowser

@@ -103,7 +103,7 @@ def back_to_normal_playlist(heading_label, video_title, video_title_res, owner, 
 
 
 def dark_mode_func_search(search_window, space_label, heading_label, video_title, video_title_res, file_size_res360, file_size_res720,
-    file_size_res128, Browse, note, audio_one, label2, label3, label4, label5, label6, res_one,
+    file_size_res128, Browse, note, audio_one, label2, label3, label4, label5, label6, label7, res_one,
                           res_two, home_button):
 
     search_window.config(bg='#1A2421')
@@ -124,6 +124,7 @@ def dark_mode_func_search(search_window, space_label, heading_label, video_title
     label4.config(bg="#1A2421")
     label5.config(bg="#1A2421")
     label6.config(bg="#1A2421")
+    label7.config(bg="#1A2421")
 
     res_one.config(bg='#1A2421', foreground='yellow')
     res_two.config(bg='#1A2421', foreground='yellow')
@@ -133,7 +134,7 @@ def dark_mode_func_search(search_window, space_label, heading_label, video_title
 
 
 def back_to_normal_search(search_window, space_label, heading_label, video_title, video_title_res, file_size_res360, file_size_res720,
-    file_size_res128, Browse, note, audio_one, label2, label3, label4, label5, label6, res_one,
+    file_size_res128, Browse, note, audio_one, label2, label3, label4, label5, label6, label7, res_one,
                           res_two, home_button):
     search_window.config(bg='white')
     space_label.config(bg="white", foreground='black')
@@ -153,6 +154,7 @@ def back_to_normal_search(search_window, space_label, heading_label, video_title
     label4.config(bg="white")
     label5.config(bg="white")
     label6.config(bg="white")
+    label7.config(bg="white")
     res_one.config(bg='white', foreground='black')
     res_two.config(bg='white', foreground='black')
     home_button.config(bg="white", foreground='black')
