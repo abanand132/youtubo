@@ -103,7 +103,7 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
         title = yt.title
         newstr = ""
         for i in title:
-            if i.isalnum() or i == " ":
+            if i.isalnum() or i == " " or i == '-' or i == "_" or i == "'":
                 newstr += i
         title = newstr
         # print(title)
@@ -238,7 +238,7 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
         # variable to hold on to checked state, 0 is off, 1 is on.
         checked_state = IntVar()
         isSubtitle = Checkbutton(search_window, text="Download Subtitle", variable=checked_state)
-        isSubtitle.config(font=('consolas', 11), bg='#edea9a', foreground='black')
+        isSubtitle.config(font=('consolas', 11), bg='#dbde40', foreground='black')
         isSubtitle.grid(row=11, column=1)
 
 

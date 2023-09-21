@@ -130,11 +130,11 @@ def search_playlist():
     url = playlist_list.get()
     if len(url) > 0:
         try:
-            p = Playlist(url)
-            playlistTitle = p.title
-            noOfVideos = p.length
+            p_obj = Playlist(url)
+            playlistTitle = p_obj.title
+            noOfVideos = p_obj.length
 
-            playlist_download.playlist(p, playlistTitle, noOfVideos, home, theme_integer)
+            playlist_download.playlist(p_obj, playlistTitle, noOfVideos, home, theme_integer)
 
         except pytube.exceptions.VideoPrivate:
             messagebox.showwarning(title="Failed!", message="Sorry You can't download private videos from YouTube."
@@ -172,7 +172,7 @@ search1 = Button(text="Search Playlist", font=('arial', 13, 'bold'), bg='black',
 search1.config(activebackground='green', activeforeground='white')
 search1.grid(row=10, column=2)
 
-youtubo_version = 1.1
+youtubo_version = 1.2
 yt_version = Label(text=f"version - {youtubo_version}", font=('arial', 12))
 yt_version.grid(row=13, column=2)
 

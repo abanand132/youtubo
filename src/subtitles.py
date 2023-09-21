@@ -14,7 +14,7 @@ def desktop_notify(message):
 def download_subtitle(yt, download_path, title):
     """
     :param yt: YouTube object
-    :param download_path: location where to download the subtitle file. Generally video & subtile location are same
+    :param download_path: location where to download the subtitle file. Generally video & subtitle location are same
     :param title : video title
     :return: None
     """
@@ -25,11 +25,11 @@ def download_subtitle(yt, download_path, title):
         srt_format = SRTFormatter()
         sub = srt_format.format_transcript(caption)
 
-        with open(f"{download_path}\{title}.srt", 'w') as file:
+        with open(f"{download_path}"+"/"+f"{title}.srt", 'w') as file:
             pass
         file.close()
 
-        with open(f"{download_path}\{title}.srt", 'w') as file:
+        with open(f"{download_path}"+"/"+f"{title}.srt", 'w') as file:
             file.write(sub)
         file.close()
 

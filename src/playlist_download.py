@@ -5,6 +5,7 @@ from tkinter import messagebox
 import urllib.error
 from plyer import notification
 import themes
+import subtitles
 
 # play_win -> name of playlist window
 
@@ -44,6 +45,14 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
             ani = '⬜' * box_print
             print(f"{ani} {round(percentage_of_completion, 0)}%")
             box_print += 1
+
+        def modify_title(video_title):
+            title = video_title
+            newstr = ""
+            for i in title:
+                if i.isalnum() or i == " " or i == '-' or i == "_" or i == "'":
+                    newstr += i
+            return newstr
 
         # Labels
         heading_label = Label(play_win, text="File fetched successfully..", font=('Times New Roman', 18), bg='white')
@@ -111,7 +120,11 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
                     box_print = 1
                     vid.register_on_progress_callback(on_progress)
                     try:
-                        vid.streams.filter(progressive=True)[-1].download(f"{Download_path.get()}")
+                        title = modify_title(vid.title)  # modifying video title
+                        vid.streams.filter(progressive=True)[-1].download(output_path=Download_path.get(),
+                                                                          filename=f"{title}.mp4")
+                        if checked_state.get():
+                            subtitles.download_subtitle(vid, Download_path.get(), title)
                         count += 1
 
                     except urllib.error.URLError:
@@ -140,6 +153,11 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
         download_button.config(activeforeground='white', activebackground='red', command=download_func)
         download_button.grid(row=5, column=2)
 
+        # variable to hold on to checked state, 0 is off, 1 is on.
+        checked_state = IntVar()
+        isSubtitle = Checkbutton(play_win, text="Download Subtitle", variable=checked_state)
+        isSubtitle.config(font=('consolas', 11), bg='#dbde40', foreground='black')
+        isSubtitle.grid(row=5, column=3)
 
         dark_mode_btn = Button(play_win, text="🌑", font=('arial', 30), bg='white', foreground='black', borderwidth=0,
                                command=dark_mode_func)
