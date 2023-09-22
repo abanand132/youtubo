@@ -3,7 +3,7 @@
 ### A lightweight, easy to use, Youtube Videos & Audio downloader
 
 It is python based gui software that helps user to download youtube videos (single video or entire playlist) and audio(mp3) with just few clicks.
-[(Tutorial Video)]([https://youtu.be/fbaBSspiIos](https://drive.google.com/file/d/1zrcVaW5yW-qOwXgCEeojaECO3qARaNAu/view?usp=sharing))
+[(Tutorial Video)](https://youtu.be/fbaBSspiIos](https://drive.google.com/file/d/1zrcVaW5yW-qOwXgCEeojaECO3qARaNAu/view?usp=sharing))
 
 ## Contents
 - [Important Info](#important-info)
@@ -36,7 +36,7 @@ It is python based gui software that helps user to download youtube videos (sing
 ## Installations
 - Just go to [Application Folder](https://github.com/abanand132/youtubo/tree/main/application) and download **youtubo.exe** file.
 - After successful downloading into your device, just double click and start. You are ready to go. That's it.
-- User can also watch tutorial video [(Click Here)]([https://youtu.be/fbaBSspiIos](https://drive.google.com/file/d/1zrcVaW5yW-qOwXgCEeojaECO3qARaNAu/view?usp=sharing)) 
+- User can also watch tutorial video [(Click Here)](https://youtu.be/fbaBSspiIos](https://drive.google.com/file/d/1zrcVaW5yW-qOwXgCEeojaECO3qARaNAu/view?usp=sharing)) 
 ## Known Issues
 - If you are facing Microsoft Defender issue  then just click on `more info` and then `run anyway` or watch video given below
   https://github.com/abanand132/youtubo/assets/76703822/ede26d11-94ae-441e-a430-05b45a217aeb
