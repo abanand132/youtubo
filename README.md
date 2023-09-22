@@ -21,8 +21,8 @@ It is python based gui software that helps user to download youtube videos (sing
 
 - User can download a single video or an entire playlist according to their needs
 - Multiple Resolutions (360p, 720p etc.) of videos available
-- You can also download just audio (mp3) of a video
-- English Subtitles (if available) then can be downloaded alongside with the Single video as well as for whole Playlist 
+- Users can also download just audio (mp3) of a video
+- English Subtitles (if available) can be downloaded alongside with the Single video as well as for whole Playlist 
 - Application comes with light mode & dark mode
 - Progress bar to show the status of video/audio downloading
 - Notify users when download completed
