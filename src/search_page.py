@@ -242,9 +242,11 @@ def search(yt, home, stream720, stream360, stream128, theme_integer):
         isSubtitle.grid(row=11, column=1)
 
 
-        note = Label(search_window, text='On clicking "Download" button, your download will be\n automatically '
-                                         'started and "Download" button will become red. \n'
-                                         'We will let you know through pop-up notification.')
+        note = Label(search_window, text='On clicking "Download" button, entire application\n will be '
+                                         'minimized. Download progress will be displayed on \n'
+                                         'the console that opens along with the software. Do not\n'
+                                         'try to open the application during downloading as it\n'
+                                         'may cause error')
         note.config(bg="white", foreground='blue')
         note.grid(row=13, column=2)
 
