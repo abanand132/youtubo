@@ -41,7 +41,7 @@ It is python based gui software that helps user to download youtube videos (sing
 - If you are facing Microsoft Defender issue  then just click on `more info` and then `run anyway` or watch video given below
   https://github.com/abanand132/youtubo/assets/76703822/ede26d11-94ae-441e-a430-05b45a217aeb
    - If in your system, you don't see `run anyway` then you need to download manually. Follow the steps given below.
-      - Download the zip file of entire repo present inside `code` button.
+      - Download the zip file of entire repo present inside `code` button. [See this](https://github.com/abanand132/youtubo/assets/76703822/176999c4-ba62-439a-b388-e944b91cdf74)
       - Extract the files from zip.
       - Go to `src` and then double click on `main.py`. Application should run after installing some modules.
       - `Python should be installed in your system for this process`
