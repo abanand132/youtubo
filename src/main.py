@@ -2,27 +2,34 @@ import urllib.error
 from tkinter import *
 from tkinter import messagebox
 import webbrowser
-# including other python files
-import search_page
-import themes
-import playlist_download
 import installation
 
 # if pytube/plyer module is not installed in the user's device then it will install it
 try:
     from pytube import YouTube, Playlist
     import pytube.exceptions
+    import plyer
+    import youtube_transcript_api
 except ModuleNotFoundError:
     if messagebox.askyesno(title="Need to download libraries",
-                           message='Software needs to install some libraries to work properly.\n\nPress "Yes" to start download'):
+                           message='Software needs to install some modules to work properly.\n\nPress "Yes" to start download'):
         p = installation.main("pytube")
         q = installation.main("plyer")
         r = installation.main("youtube-transcript-api")
-        if p and q:
+        if p and q and r:
             if messagebox.askokcancel(title="Restart Application",
                     message="We installed some required library to run this application.\nSo, you need "
                             "to restart the application to complete the installation process.\n\nThank you"):
                 exit()
+    else:
+        messagebox.showwarning(title="Error", message="The Application won't run until you allow to "
+                                                      "download required modules")
+        exit()
+
+# including other python files
+import search_page
+import themes
+import playlist_download
 
 # home window creation
 home = Tk()
