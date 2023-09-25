@@ -115,13 +115,17 @@ def search_func():
                                            "\nPlease check the link you pasted."
                                            "\n\nThank you!")
 
+        except pytube.exceptions.AgeRestrictedError:
+            messagebox.showwarning(title="Failed!", message="We can't fetch your video.\n\n"
+                                                        "This video is Age Restricted. So, can't be downloaded ")
+
         except pytube.exceptions.VideoUnavailable:
             messagebox.showwarning(title="Failed!", message="Either you pasted wrong link or link may be distorted!")
-
 
         except urllib.error.URLError:
             messagebox.showwarning(title="Failed!", message="We can't fetch your video.\n\n"
                                                             "Please check your Internet Connection!")
+
     else:
         messagebox.showwarning(title='Failed', message="Error! You can't leave link field empty")
 
