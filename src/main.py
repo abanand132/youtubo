@@ -3,6 +3,11 @@ from tkinter import *
 from tkinter import messagebox
 import webbrowser
 import installation
+import fetch_version
+
+with open("version.txt") as file:
+    local_version = file.read()
+file.close()
 
 # if pytube/plyer module is not installed in the user's device then it will install it
 try:
@@ -37,6 +42,8 @@ home.title("Youtubo - Youtube Video/Audio Downloader")
 home.config(bg='white', pady=20, padx=10)
 home.state('zoomed')
 
+if local_version != fetch_version.repo_version():
+    print("Need for update")
 
 # For Space
 str1 = "                                          "
@@ -87,6 +94,8 @@ link_entry.focus()
 playlist_list = Entry(width=50, borderwidth=1, font=('arial', 14))
 playlist_list.config(highlightthickness=1, highlightbackground="black", highlightcolor='red')
 playlist_list.grid(row=8, column=2)
+
+
 
 
 # Functions calling
