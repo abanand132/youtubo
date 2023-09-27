@@ -15,7 +15,7 @@ It is python based gui software that helps user to download youtube videos (sing
 
 ## Important Info
 - Operating System : Windows
-- Current version : 1.3
+- Current version : 1.4
 - Developer : [Abhishek Anand](https://theabhishek.me)
 
 ## Features
