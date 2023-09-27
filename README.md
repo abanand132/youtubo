@@ -27,6 +27,7 @@ It is python based gui software that helps user to download youtube videos (sing
 - Application comes with light mode & dark mode
 - Progress bar to show the status of video/audio downloading
 - Notify users when download completed
+- User will get update notification when new version will be available
 
 ## Tech Stacks
 - Python3
