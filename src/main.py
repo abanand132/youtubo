@@ -161,6 +161,10 @@ def search_playlist():
                                            "\nPlease check the link you pasted."
                                            "\n\nThank you!")
 
+        except pytube.exceptions.AgeRestrictedError:
+            messagebox.showwarning(title="Failed!", message="We can't fetch your video.\n\n"
+                                                        "This video is Age Restricted. So, can't be downloaded ")
+
         except pytube.exceptions.VideoUnavailable:
             messagebox.showwarning(title="Failed!", message="Either you pasted wrong link or link may be distorted!")
 
@@ -183,7 +187,7 @@ search1 = Button(text="Search Playlist", font=('arial', 13, 'bold'), bg='black',
 search1.config(activebackground='green', activeforeground='white')
 search1.grid(row=10, column=2)
 
-youtubo_version = 1.2
+youtubo_version = 1.3
 yt_version = Label(text=f"version - {youtubo_version}", font=('arial', 12))
 yt_version.grid(row=13, column=2)
 

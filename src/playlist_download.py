@@ -131,7 +131,7 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
                         messagebox.showwarning(title="Failed!", message="We can't fetch your video.\n\n"
                                                                         "Please check your Internet Connection!")
                     except:
-                        messagebox.showwarning(message="Error !!")
+                        messagebox.showwarning(message="Fatal Error !! Contact Developer")
                         play_win.destroy()
                         home.state("zoomed")
 
