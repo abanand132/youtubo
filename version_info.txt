@@ -1,0 +1,7 @@
+version 1.4
+
+- added a update function
+    - when new version is available then user gets the notification to download
+      the new version as the previous will stop working
+
+- Fixing Minor bugs
