@@ -63,7 +63,8 @@ def back_to_normal_main(home, sub_heading_label, link_entry, note1, label1,
 # Dark mode function of playlist_download.py file
 
 def dark_mode_func_playlist(heading_label, video_title, video_title_res, owner, total_videos,
-            res_one, label1, label2, label3, Browse, home_button, dark_mode_btn,  play_win):
+            res_one, label1, label2, label3, label4, label5, Browse, home_button, dark_mode_btn,  play_win,
+                            start, end):
     play_win.config(bg='#1A2421')
     heading_label.config(bg='#1A2421', foreground='white')
     video_title.config(bg='#1A2421', foreground='yellow')
@@ -78,11 +79,15 @@ def dark_mode_func_playlist(heading_label, video_title, video_title_res, owner, 
     label1.config(bg='#1A2421')
     label2.config(bg='#1A2421')
     label3.config(bg='#1A2421')
-
+    label4.config(bg='#1A2421')
+    label5.config(bg='#1A2421')
+    start.config(insertbackground="white", bg="#1A2421", fg="white", highlightcolor="white", highlightbackground="#1A2421")
+    end.config(insertbackground="white", bg="#1A2421", fg="white")
 
 
 def back_to_normal_playlist(heading_label, video_title, video_title_res, owner, total_videos,
-            res_one, label1, label2, label3, Browse, home_button, dark_mode_btn, play_win):
+            res_one, label1, label2, label3, label4, label5, Browse, home_button, dark_mode_btn, play_win,
+                            start, end):
     play_win.config(bg='white')
     heading_label.config(bg='white', foreground='black')
     video_title.config(bg='white', foreground='black')
@@ -97,7 +102,10 @@ def back_to_normal_playlist(heading_label, video_title, video_title_res, owner, 
     label1.config(bg='white')
     label2.config(bg='white')
     label3.config(bg='white')
-
+    label4.config(bg='white')
+    label5.config(bg='white')
+    start.config(insertbackground="black", bg="white", fg="black")
+    end.config(insertbackground="black", bg="white", fg="black")
 
 # Dark mode functions of search_page.py file
 

@@ -41,7 +41,7 @@ home.title("Youtubo - Youtube Video/Audio Downloader")
 home.config(bg='white', pady=20, padx=10)
 home.state('zoomed')
 
-youtubo_version = 1.4
+youtubo_version = 1.5
 
 if youtubo_version != repo_version:
     if messagebox.askyesno(title="Update", message=f"Update Available YouTubo - v{youtubo_version}\n"
@@ -93,7 +93,6 @@ playlist_link = Label(text="Playlist Link : ", bg="white", font=('arial', 14))
 playlist_link.grid(row=8, column=1)
 
 # Entry Boxes
-
 link_entry = Entry(width=50, borderwidth=1, font=('arial', 14))
 link_entry.config(highlightthickness=1, highlightbackground="black", highlightcolor='red')
 link_entry.grid(row=4, column=2)
@@ -160,9 +159,8 @@ def search_playlist():
         try:
             p_obj = Playlist(url)
             playlistTitle = p_obj.title
-            noOfVideos = p_obj.length
 
-            playlist_download.playlist(p_obj, playlistTitle, noOfVideos, home, theme_integer)
+            playlist_download.playlist(p_obj, playlistTitle, home, theme_integer)
 
         except pytube.exceptions.VideoPrivate:
             messagebox.showwarning(title="Failed!", message="Sorry You can't download private videos from YouTube."

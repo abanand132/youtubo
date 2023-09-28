@@ -1,3 +1,11 @@
+version 1.5
+
+- added video range within playlist support
+    - You can download videos of the playlist with range
+    e.g., a playlist contains 100 videos. Now you can download like video no. 25 to 50. It only download
+    videos. Start and End videos are included.
+
+
 version 1.4
 
 - added a update function

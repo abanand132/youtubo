@@ -25,11 +25,11 @@ def download_subtitle(yt, download_path, title):
         srt_format = SRTFormatter()
         sub = srt_format.format_transcript(caption)
 
-        with open(f"{download_path}"+"/"+f"{title}.srt", 'w') as file:
+        with open(f"{download_path}"+"/"+f"{title}.srt", 'w', encoding="utf8") as file:
             pass
         file.close()
 
-        with open(f"{download_path}"+"/"+f"{title}.srt", 'w') as file:
+        with open(f"{download_path}"+"/"+f"{title}.srt", 'w', encoding="utf8") as file:
             file.write(sub)
         file.close()
 
@@ -41,3 +41,10 @@ def download_subtitle(yt, download_path, title):
     except NoTranscriptFound:
         message = "No English subtitle is found!\nTry downloading without subtitles"
         messagebox.showerror(title="Error", message=f"{message}")
+
+    except UnicodeEncodeError:
+        message = "Detect some error in the subtitle file\nClick OK to skip this and continue to download next"
+        messagebox.showerror(title="Error", message=f"{message}")
+
+    except:
+        messagebox.showerror(title="Issue", message="This subtitle contains some error\nPress OK to skip this")

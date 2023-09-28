@@ -19,7 +19,7 @@ def desktop_notify(location):
         timeout=10
     )
 
-def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the object of the Playlist class
+def playlist(p, playlistTitle, home, theme_integer):  # p is the object of the Playlist class
     try:
         play_win = Toplevel()
         play_win.title("Search-result")
@@ -29,12 +29,14 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
 
         def back_to_normal_func():
             themes.back_to_normal_playlist(heading_label, video_title, video_title_res, owner, total_videos,
-                 res_one, label1, label2, label3, Browse, home_btn, dark_mode_btn, play_win)
+                 res_one, label1, label2, label3, label4, label5, Browse, home_btn, dark_mode_btn, play_win,
+                                           start, end)
             dark_mode_btn.config(command=dark_mode_func, text="🔆")
 
         def dark_mode_func():
             themes.dark_mode_func_playlist(heading_label, video_title, video_title_res, owner, total_videos,
-                 res_one, label1, label2, label3, Browse, home_btn, dark_mode_btn, play_win)
+                 res_one, label1, label2, label3, label4, label5, Browse, home_btn, dark_mode_btn, play_win,
+                                           start, end)
             dark_mode_btn.config(command=back_to_normal_func, text="🌙")
 
         def on_progress(stream, chunk, bytes_remaining):
@@ -69,6 +71,12 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
 
         label3 = Label(play_win, text="", bg="white")  # to create space
         label3.grid(row=6, column=0)
+
+        label4 = Label(play_win, text="", bg="white")  # to create space
+        label4.grid(row=8, column=0)
+
+        label5 = Label(play_win, text="", bg="white")  # to create space
+        label5.grid(row=10, column=0)
 
 
         # Video Details
@@ -109,13 +117,15 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
         res_one = Label(play_win, text="720p :", font=('arial', 12), bg='white')
         res_one.grid(row=5, column=1)
 
-        def download_func():
+        def download_func(start_pos=0, end_pos=p.length-1):
             count = 0
             if var.get() == 0:
                 play_win.iconify()
-                for vid in p.videos:
+
+                for i in range(start_pos, end_pos+1):
+                    vid = p.videos[i]
                     os.system('cls')
-                    print(f"Downloading Video {count+1}/{noOfVideos}..")
+                    print(f"Downloading Video {count+1}/{end_pos - start_pos + 1}..")
                     global box_print
                     box_print = 1
                     vid.register_on_progress_callback(on_progress)
@@ -130,16 +140,16 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
                     except urllib.error.URLError:
                         messagebox.showwarning(title="Failed!", message="We can't fetch your video.\n\n"
                                                                         "Please check your Internet Connection!")
-                    except:
-                        messagebox.showwarning(message="Fatal Error !! Contact Developer")
-                        play_win.destroy()
-                        home.state("zoomed")
+                    # except:
+                    #     messagebox.showwarning(message="Fatal Error !! Contact Developer")
+                    #     play_win.destroy()
+                    #     home.state("zoomed")
 
-                    if noOfVideos == count:
-                        desktop_notify(f"{Download_path.get()}\{p.title}")
+                    if (end_pos - start_pos + 1) == count:
+                        desktop_notify(f"{Download_path.get()}"+'/'+"{p.title}")
                         play_win.state("zoomed")
 
-                if count != noOfVideos:
+                if count != (end_pos - start_pos + 1):
                     messagebox.showwarning(message="Due to some technical issue, we can't able to download"
                                                " all videos")
                     play_win.destroy()
@@ -147,11 +157,47 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
             else:
                 messagebox.showwarning(title='Failed', message="You need to select location to download file/files")
 
+        def download():
+            try:
+                start_index = int(start.get()) - 1
+                end_index = int(end.get()) - 1
+                if end_index < len(p.videos) and start_index > 0:
+                    download_func(start_pos=start_index, end_pos=end_index)
+                else:
+                    messagebox.showerror(title="Error!", message="Video range is exceeding the playlist")
+
+            except ValueError:
+                download_func()
+
+        # it will delete the temporary text when focused in those entry boxes
+        # def delete_text1(self):
+        #     start.delete(0, END)
+        #
+        # def delete_text2(self):
+        #     end.delete(0, END)
+
+        def temp():
+            start.config(width=5, font=("arial", 14), state="normal")
+            start.insert(0, "start")
+            # start.bind("<FocusIn>", delete_text1)
+            end.config(width=5, font=("arial", 14), state="normal")
+            end.insert(0, "end")
+            # end.bind("<FocusIn>", delete_text2)
+            download_range.config(command=download)
+
         # Buttons
 
-        download_button = Button(play_win, text="Download", foreground="white", font=('arial', 13), bg="green")
+        # download all videos
+        download_button = Button(play_win, text="Download All Videos", foreground="white", font=('arial', 13),
+                                 bg="green")
         download_button.config(activeforeground='white', activebackground='red', command=download_func)
         download_button.grid(row=5, column=2)
+
+        # download videos within specific range
+        download_range = Button(play_win, text="Download Videos Within Range", foreground="white",
+                                font=('arial', 13), bg="green")
+        download_range.config(activeforeground='white', activebackground='red', command=temp)
+        download_range.grid(row=7, column=2)
 
         # variable to hold on to checked state, 0 is off, 1 is on.
         checked_state = IntVar()
@@ -159,9 +205,16 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
         isSubtitle.config(font=('consolas', 11), bg='#dbde40', foreground='black')
         isSubtitle.grid(row=5, column=3)
 
+        # Entry boxes
+        start = Entry(play_win, width=0, state="disabled")
+        start.grid(row=9, column=1)
+
+        end = Entry(play_win, width=0, state="disabled")
+        end.grid(row=9, column=3)
+
         dark_mode_btn = Button(play_win, text="🌑", font=('arial', 30), bg='white', foreground='black', borderwidth=0,
                                command=dark_mode_func)
-        dark_mode_btn.grid(row=7, column=0)
+        dark_mode_btn.grid(row=11, column=0)
 
 
         def home_func():
@@ -185,6 +238,11 @@ def playlist(p, playlistTitle, noOfVideos, home, theme_integer):  # p is the obj
                                                                             font=('arial', 15)))
         download_button.bind("<Leave>", func=lambda e: download_button.config(background='green', foreground='white',
                                                                             font=('arial', 13)))
+
+        download_range.bind("<Enter>", func=lambda e: download_range.config(background='yellow', foreground='black',
+                                                                              font=('arial', 15)))
+        download_range.bind("<Leave>", func=lambda e: download_range.config(background='green', foreground='white',
+                                                                              font=('arial', 13)))
 
 
     except urllib.error.URLError:
